@@ -11,6 +11,8 @@ img {
 input {
   margin-top:10px;
   padding-top:5px;
+  max-width: 500px;
+  margin-left: 32%;
 }
 
 input[type=search] {
