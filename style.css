@@ -1,82 +1,120 @@
-body{
-  text-align:center;
+body {
+  text-align: center;
 }
 
 img {
+  margin-top: 10px;
+  margin-bottom:10px;
+}
+/* Allow smooth sliding after search */
+/* Actually just don't put type=search you can also have the same effect, I just wanted to see how it was made*/
+input {
   margin-top:10px;
-  margin-bottom:5px;
+  padding-top:5px;
 }
 
-.input {
-  width:50%;
-  margin:0 auto;
-  text-align:center;
+input[type=search] {
+  width: 50%;
+  color:#2e2e2e;
+  margin: 0 auto;
+  text-align: left;
+  letter-spacing: 0.1px;             
+  word-spacing: 0px;
+  border: 2px solid #dadada;
+  
+  
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+}
+
+input[type=search]:focus {
+  outline:none;
+  border-color: #9ecaed;
+  box-shadow: 0px 0px 10px #9ecaed;
+}
+
+.form-horizontal{
+  overflow-y: hidden;
+  max-height: 500px; /* approximate max height */
+
+  transition-property: all;
+  transition-duration: 5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
 
 .search {
-  margin-top: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .btn {
+  outline: none;
+  
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
   border-radius: 5px;
-  outline:none;
 }
 
-.btn:hover{
+.btn:hover {
   back-ground-color: grey;
-  font-weight:bold;
-  
-  -webkit-transform: scale(1.1,1.1);
-  -moz-transform: scale(1.1,1.1);
-  transform: scale(1.1,1.1);
+  font-weight: bold;
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
 }
+
 .invisible {
-  display:none;
+  display: none;
 }
 
 .outcome {
   border: 2px solid lightgrey;
-  text-align:left;
+  text-align: left;
   padding: 2px 2px 2px 2px;
-  margin-bottom:5px;
-  
+  margin-bottom: 5px;
   color: darkgrey;
 }
 
 .title {
   font-size: 20px;
-  font-weight:bold;
-  color:black;
+  font-weight: bold;
+  color: black;
 }
 
-.margin {
-  margin-top:10px;
+.form-horizontal .margin {
+  margin-top: 15px;
+  max-height: 40px;
 }
 
 a:hover {
-  text-decoration:none;
+  text-decoration: none;
 }
+
 .outcome:hover {
   border-left: 3px solid darkgrey;
   border-top: 3px solid darkgrey;
   color: black;
-  
-  
   -webkit-box-shadow: 2px 2px 2px black;
   -moz-box-shadow: 2px 2px 2px black;
   box-shadow: 2px 2px 2px black;
 }
 
 .ui-autocomplete {
-    background: white;
-    list-style-type: none;
-    text-align: left;
-    width: 130px;
-    padding-left:2px; 
-    margin:0;
-    border: 1px solid grey;
+  background: white;
+  list-style-type: none;
+  text-align: left;
+  width: 130px;
+  padding-left: 2px;
+  margin: 0;
+  border: 1px solid grey;
 }
 
 .ui-menu {
-    cursor: pointer;
+  cursor: pointer;
+  
+}
+
+.ui-menu-item:hover {
+  background-color:#9ecaed;
 }

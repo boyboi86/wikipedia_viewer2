@@ -1,33 +1,32 @@
 $(document).ready(function() {
-  //get ready your functions
   search()
   $(".main").fadeIn(1500);
-  
-//autocomplete below
+
+  //autocomplete below
   $(".form-control").autocomplete({
     source: function(req, res) {
-        $.ajax({
-            url: "http://en.wikipedia.org/w/api.php",
-            dataType: 'jsonp',
-            data: {
-                action: "opensearch",
-                format: "json",
-                search: $(".form-control").val()
-            },
-            success: function(data) {
-                res(data[1]);
-            }
-        });  
+      $.ajax({
+        url: "http://en.wikipedia.org/w/api.php",
+        dataType: 'jsonp',
+        data: {
+          action: "opensearch",
+          format: "json",
+          search: $(".form-control").val()
+        },
+        success: function(data) {
+          res(data[1]);
+        }
+      });
     }
-});
-  
+  });
+
   //for both "enter" and click select
   function search() {
     $(".form-control").keypress(function(e) {
       if (e.keyCode == 13 && $(".form-control").val().length > 1) {
         e.preventDefault();
         displaySearch();
-//html do not put type="submit"
+        //html do not put type="submit"
       };
 
       $(".btn").on("click", function(e) {
@@ -35,17 +34,14 @@ $(document).ready(function() {
           displaySearch();
         }
       });
-/*
-Replace the entire $.ajax code with the below $getJSON will also work
+      /*
+      Replace the entire $.ajax code with the below code will also work
 
-$.getJSON("https://en.wikipedia.org/w/api.php?
-action=query&list=search&format=json&srsearch="+$(".form-control").val() 
-  +"&srnamespace=0&srwhat=text&titles=Main%20Page&callback=?", 
-  function(data) {} ; */
+      $.getJSON("https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch="+$(".form-control").val() +"&srnamespace=0&srwhat=text&titles=Main%20Page&callback=?", function(data) {} ; */
 
       function displaySearch() {
         $.ajax({
-          url: "https://en.wikipedia.org/w/api.php",
+          url: "https://en.wikipedia.org/w/api.php?",
           dataType: 'jsonp',
           data: {
             action: "query",
@@ -62,10 +58,11 @@ action=query&list=search&format=json&srsearch="+$(".form-control").val()
           }
         })
       };
-
+//tried adding effects but zzzz
       function displayResult(data) {
+        
         $("#outcome").html("");
-        $("img").addClass("invisible");
+        $("img").fadeOut(1000).delay(500).slideUp(600);
         $(".btn").addClass("invisible");
         $(".form-control").addClass("margin");
 
@@ -83,7 +80,10 @@ action=query&list=search&format=json&srsearch="+$(".form-control").val()
           result += "</div>";
           result += "</a>";
 
-          $("#outcome").append(result);
+//fadeIn effect after append
+//apparently doesn't work
+          $(result).appendTo("#outcome").hide().fadeIn(1000);
+          
           $(".form-control").val("");
         })
 
